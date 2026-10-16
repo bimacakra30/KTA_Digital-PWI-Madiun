@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SEKRETARIS
+  KETUA
+  SUPERADMIN
+}
+
+enum MemberStatus {
+  DRAFT
+  DISETUJUI
+  DICABUT
+  KEDALUWARSA
+}
+
+enum LogAction {
+  CREATE
+  UPDATE
+  APPROVE
+  REVOKE
+  EXTEND
+  REISSUE
+  DELETE
+  EXPIRE
+}
+
+model User {
+  id                 String   @id @default(cuid())
+  nama               String
+  email              String   @unique
+  passwordHash       String   @map("password_hash")
+  role               Role
+  isActive           Boolean  @default(true) @map("is_active")
+  batchDeleteEnabled Boolean  @default(false) @map("batch_delete_enabled")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model LeadershipPeriod {
+  id             String    @id @default(cuid())
+  namaKetua      String    @map("nama_ketua")
+  jabatan        String
+  tandaTanganUrl String?   @map("tanda_tangan_url")
+  periodeMulai   DateTime  @map("periode_mulai")
+  periodeSelesai DateTime? @map("periode_selesai")
+  isActive       Boolean   @default(false) @map("is_active")
+  members        Member[]
+
+  @@map("leadership_periods")
+}
+
+model Member {
+  id                 String       @id @default(cuid())
+  noAnggota          String       @unique @map("no_anggota")
+  nama               String
+  fotoUrl            String?      @map("foto_url")
+  jabatan            String?
+  tempatLahir        String?      @map("tempat_lahir")
+  tanggalLahir       DateTime?    @map("tanggal_lahir")
+  provinsi           String?
+  kabupaten          String?
+  kecamatan          String?
+  desa               String?
+  rt                 String?
+  rw                 String?
+  tanggalBergabung   DateTime     @map("tanggal_bergabung")
+  masaBerlaku        DateTime     @map("masa_berlaku")
+  consentAt          DateTime?    @map("consent_at")
+  verifyToken        String?      @unique @map("verify_token")
+  status             MemberStatus @default(DISETUJUI)
+  approvedById       String?      @map("approved_by_id")
+  approvedAt         DateTime?    @map("approved_at")
+  leadershipPeriodId String?      @map("leadership_period_id")
+  leadershipPeriod   LeadershipPeriod? @relation(fields: [leadershipPeriodId], references: [id])
+  revokedById        String?      @map("revoked_by_id")
+  revokedAt          DateTime?    @map("revoked_at")
+  revokeReason       String?      @map("revoke_reason") @db.Text
+  createdById        String       @map("created_by_id")
+  createdAt          DateTime     @default(now()) @map("created_at")
+  updatedAt          DateTime     @updatedAt @map("updated_at")
+  deletedAt          DateTime?    @map("deleted_at")
+  logs               ApprovalLog[]
+
+  @@index([status])
+  @@index([nama])
+  @@index([leadershipPeriodId])
+  @@map("members")
+}
+
+model ApprovalLog {
+  id        String    @id @default(cuid())
+  memberId  String    @map("member_id")
+  member    Member    @relation(fields: [memberId], references: [id])
+  action    LogAction
+  actorId   String    @map("actor_id")
+  ip        String?
+  note      String?   @db.Text
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  @@index([memberId])
+  @@index([actorId])
+  @@map("approval_logs")
+}
+
+model ScanLog {
+  id        String   @id @default(cuid())
+  memberId  String?  @map("member_id")
+  tokenHash String   @map("token_hash")
+  ipHash    String   @map("ip_hash")
+  userAgent String?  @map("user_agent") @db.Text
+  scannedAt DateTime @default(now()) @map("scanned_at")
+
+  @@index([tokenHash])
+  @@map("scan_logs")
+}

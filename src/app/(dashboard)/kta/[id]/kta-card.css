@@ -1,0 +1,30 @@
+.kta-card{--u:9px;position:relative;width:calc(85.6*var(--u));height:calc(53.98*var(--u));border-radius:calc(2.4*var(--u));overflow:hidden;background:#f7f8f5;box-shadow:0 calc(1.2*var(--u)) calc(4*var(--u)) rgba(0,0,0,.28);color:#111;font-family:Montserrat,Arial,sans-serif}
+.kta-card .p{position:absolute}
+.kta-card .head{left:0;top:0;width:100%;height:31.6%;background:radial-gradient(120% 140% at 30% 0%,#0d6b32 0%,#07431f 60%,#042d15 100%)}
+.kta-card .head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:calc(.45*var(--u));background:linear-gradient(90deg,#8a5d05,#ffe27a 30%,#b98410 60%,#ffe27a 85%,#8a5d05)}
+.kta-card .sw{left:-6%;top:25%;width:46%;height:calc(1.1*var(--u));background:linear-gradient(90deg,transparent,#e9bd35 40%,#fff1a8 70%,transparent);transform:rotate(7deg)}
+.kta-card .sw2{right:-8%;top:3%;width:20%;height:calc(1.4*var(--u));background:linear-gradient(90deg,transparent,#2fae5c 50%,#8ee3ac);transform:rotate(48deg)}
+.kta-card .logo{left:3.9%;top:1.7%;width:21.5%;aspect-ratio:420/317;background-size:contain;background-position:center;background-repeat:no-repeat}
+.kta-card .logo svg{position:absolute;left:-6%;bottom:-9%;width:112%;overflow:visible}
+.kta-card .ttl-wrap{left:27.4%;top:2%;width:50.2%;height:auto;position:absolute}
+.kta-card .ttl-wrap svg{width:100%;overflow:visible}
+.kta-card .rule{left:30%;width:46%;top:26.4%;height:calc(.18*var(--u));background:linear-gradient(90deg,transparent,#f2cf63,transparent)}
+.kta-card .emblem-img{left:80%;top:1.5%;width:14%;height:28%;object-fit:contain}
+.kta-card .wm{left:46%;top:36%;width:44%;aspect-ratio:420/317;background-size:contain;background-position:center;background-repeat:no-repeat;opacity:.07;filter:grayscale(1)}
+.kta-card .band{left:45.5%;top:31.6%;width:42%;height:7.4%;background:linear-gradient(90deg,#0a5a2a,#052f16);clip-path:polygon(4% 0,100% 0,100% 100%,0 100%);display:flex;align-items:center;justify-content:center;color:#fff;font:700 calc(2.2*var(--u))/1 Montserrat,sans-serif;letter-spacing:.04em;padding-left:2%;white-space:nowrap}
+.kta-card .kta-tag{left:86.2%;top:31.6%;width:13.8%;height:9.6%;background:linear-gradient(180deg,#0c6a31,#05401d);clip-path:polygon(0 0,100% 0,100% 100%,6% 100%,0 70%);display:flex;align-items:center;justify-content:center;padding-left:calc(1*var(--u));color:#fff;font:800 calc(3.7*var(--u))/1 Montserrat,sans-serif}
+.kta-card .frame{left:4.8%;top:33.7%;width:24.5%;height:58.2%;border-radius:calc(2*var(--u));background:linear-gradient(160deg,#0f8a3c,#06531f);border:calc(.3*var(--u)) solid #e8f2ea;box-shadow:0 0 0 calc(.2*var(--u)) #0a5a2a}
+.kta-card .photo{left:5.5%;top:34.7%;width:23%;aspect-ratio:3/4;border-radius:calc(1.6*var(--u));background-position:center top;background-size:cover;border:calc(.2*var(--u)) solid #fff}
+.kta-card .pname{left:4.8%;width:24.5%;top:84%;text-align:center;color:#fff;font:700 calc(1.5*var(--u))/1.2 Montserrat,sans-serif;letter-spacing:.04em}
+.kta-card .pline{display:none}
+.kta-card .rows-container{left:34.8%;top:40%;width:62%;display:flex;flex-direction:column;gap:calc(.8*var(--u))}
+.kta-card .data-row{display:grid;grid-template-columns:calc(15.5*var(--u)) calc(2*var(--u)) 1fr;column-gap:calc(.5*var(--u));align-items:start;font:700 calc(1.7*var(--u))/1.35 Montserrat,sans-serif;color:#101418}
+.kta-card .data-row b,.kta-card .data-row s,.kta-card .data-row span{font-weight:700;text-decoration:none}
+.kta-card .qr{left:34.8%;top:71.1%;width:11.4%;aspect-ratio:1;background-color:#fff;background-position:center;background-size:cover;border:calc(.25*var(--u)) solid #111;border-radius:calc(.3*var(--u))}
+.kta-card .motto{left:47.5%;top:76%;font:600 calc(1.05*var(--u))/1.32 Montserrat,sans-serif;color:#1d2a22;border-bottom:calc(.12*var(--u)) solid #1d2a22;padding-bottom:calc(.5*var(--u));width:calc(9.2*var(--u))}
+.kta-card .ttd{left:72.5%;width:23%;text-align:center;font:500 calc(1.3*var(--u))/1.35 Montserrat,sans-serif;top:68.6%;color:#14181c}
+.kta-card .sig{left:74%;top:74.2%;width:15.6%;aspect-ratio:240/96;object-fit:contain}
+.kta-card .sname{left:68%;width:31%;text-align:center;top:84.1%;font:800 calc(1.15*var(--u))/1.2 Montserrat,sans-serif;text-decoration:underline;text-underline-offset:calc(.25*var(--u));white-space:nowrap}
+.kta-card .npa{left:72.5%;width:23%;text-align:center;top:87.6%;font:500 calc(.98*var(--u))/1 Montserrat,sans-serif;white-space:nowrap}
+.kta-card .foot{left:0;bottom:0;width:100%;height:7.8%;background:linear-gradient(180deg,#0a5a2a,#04301a);display:flex;align-items:center;justify-content:center;gap:calc(1.6*var(--u));color:#ecc54e;font:600 calc(1.18*var(--u))/1 Montserrat,sans-serif;letter-spacing:.34em}
+.kta-card .foot::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(.4*var(--u));background:linear-gradient(90deg,#8a5d05,#ffe27a 30%,#b98410 60%,#ffe27a 85%,#8a5d05)}
